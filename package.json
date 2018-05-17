@@ -1,0 +1,28 @@
+{
+  "name": "react-native-cfstringtokenizer",
+  "version": "0.0.1",
+  "description": "Apple's CFStringTokenizer API bridged to React Native.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shirakaba/react-native-cfstringtokenizer.git"
+  },
+  "keywords": [
+    "react-native",
+    "cfstringtokenizer",
+    "nlp"
+  ],
+  "author": "Jamie Birch",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shirakaba/react-native-cfstringtokenizer/issues"
+  },
+  "homepage": "https://github.com/shirakaba/react-native-cfstringtokenizer#readme",
+  "peerDependencies": {
+    "react-native": ">= 0.47.0"
+  },
+  "dependencies": {}
+}
