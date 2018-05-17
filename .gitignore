@@ -1,0 +1,6 @@
+.DS_Store
+*/.DS_Store
+node_modules
+
+apple/JBCFStringTokenizer.xcodeproj/xcuserdata/*
+apple/JBCFStringTokenizer.xcodeproj/project.xcworkspace/xcuserdata/*
