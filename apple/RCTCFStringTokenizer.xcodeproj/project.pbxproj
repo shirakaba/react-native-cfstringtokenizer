@@ -9,10 +9,21 @@
 /* Begin PBXBuildFile section */
 		7D5489A620AF726B00860BB7 /* RCTCFStringTokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5489A520AF726B00860BB7 /* RCTCFStringTokenizer.swift */; };
 		7D5489AF20AF729C00860BB7 /* RCTCFStringTokenizerBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D5489AE20AF729C00860BB7 /* RCTCFStringTokenizerBridge.m */; };
+		7D5489B820AF73D000860BB7 /* RCTCFStringTokenizerBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D5489AE20AF729C00860BB7 /* RCTCFStringTokenizerBridge.m */; };
+		7D5489B920AF73D000860BB7 /* RCTCFStringTokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5489A520AF726B00860BB7 /* RCTCFStringTokenizer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		7D5489A020AF726B00860BB7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7D5489BB20AF73D000860BB7 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/$(PRODUCT_NAME)";
@@ -28,10 +39,18 @@
 		7D5489A520AF726B00860BB7 /* RCTCFStringTokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCTCFStringTokenizer.swift; sourceTree = "<group>"; };
 		7D5489AD20AF729C00860BB7 /* RCTCFStringTokenizer-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RCTCFStringTokenizer-Bridging-Header.h"; sourceTree = "<group>"; };
 		7D5489AE20AF729C00860BB7 /* RCTCFStringTokenizerBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTCFStringTokenizerBridge.m; sourceTree = "<group>"; };
+		7D5489BF20AF73D000860BB7 /* libRCTCFStringTokenizer-macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libRCTCFStringTokenizer-macOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		7D54899F20AF726B00860BB7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7D5489BA20AF73D000860BB7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -53,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				7D5489A220AF726B00860BB7 /* libRCTCFStringTokenizer.a */,
+				7D5489BF20AF73D000860BB7 /* libRCTCFStringTokenizer-macOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -87,6 +107,23 @@
 			productReference = 7D5489A220AF726B00860BB7 /* libRCTCFStringTokenizer.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		7D5489B620AF73D000860BB7 /* RCTCFStringTokenizer-macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7D5489BC20AF73D000860BB7 /* Build configuration list for PBXNativeTarget "RCTCFStringTokenizer-macOS" */;
+			buildPhases = (
+				7D5489B720AF73D000860BB7 /* Sources */,
+				7D5489BA20AF73D000860BB7 /* Frameworks */,
+				7D5489BB20AF73D000860BB7 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "RCTCFStringTokenizer-macOS";
+			productName = RCTCFStringTokenizer;
+			productReference = 7D5489BF20AF73D000860BB7 /* libRCTCFStringTokenizer-macOS.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -116,6 +153,7 @@
 			projectRoot = "";
 			targets = (
 				7D5489A120AF726B00860BB7 /* RCTCFStringTokenizer */,
+				7D5489B620AF73D000860BB7 /* RCTCFStringTokenizer-macOS */,
 			);
 		};
 /* End PBXProject section */
@@ -127,6 +165,15 @@
 			files = (
 				7D5489AF20AF729C00860BB7 /* RCTCFStringTokenizerBridge.m in Sources */,
 				7D5489A620AF726B00860BB7 /* RCTCFStringTokenizer.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7D5489B720AF73D000860BB7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D5489B820AF73D000860BB7 /* RCTCFStringTokenizerBridge.m in Sources */,
+				7D5489B920AF73D000860BB7 /* RCTCFStringTokenizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +335,51 @@
 			};
 			name = Release;
 		};
+		7D5489BD20AF73D000860BB7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "RCTCFStringTokenizer/RCTCFStringTokenizer-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7D5489BE20AF73D000860BB7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "RCTCFStringTokenizer/RCTCFStringTokenizer-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -305,6 +397,15 @@
 			buildConfigurations = (
 				7D5489AA20AF726B00860BB7 /* Debug */,
 				7D5489AB20AF726B00860BB7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7D5489BC20AF73D000860BB7 /* Build configuration list for PBXNativeTarget "RCTCFStringTokenizer-macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7D5489BD20AF73D000860BB7 /* Debug */,
+				7D5489BE20AF73D000860BB7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
