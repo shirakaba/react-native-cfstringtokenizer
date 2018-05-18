@@ -1,4 +1,4 @@
 import { NativeModules, Platform } from 'react-native';
-const { JBCFStringTokenizer } = NativeModules;
+const { RCTCFStringTokenizer } = NativeModules;
 
-export default JBCFStringTokenizer;
+export default RCTCFStringTokenizer;
