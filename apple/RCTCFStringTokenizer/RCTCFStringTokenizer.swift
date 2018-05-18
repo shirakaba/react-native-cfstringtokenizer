@@ -17,7 +17,7 @@ class RCTCFStringTokenizer: NSObject {
 
     // @objc static func copyBestStringLanguage(string: CFStringRef, range: CFRange) -> CFStringRef {
     @objc static func copyBestStringLanguage(_ string: String, _ length: NSNumber) -> String? {
-        return CFStringTokenizerCopyBestStringLanguage(string as CFString, CFRange(location: 0, length: CFIndex(truncating: length)))! as String;
+        return CFStringTokenizerCopyBestStringLanguage(string as CFString, CFRange(location: 0, length: CFIndex(truncating: length)))! as String
     }
     
 }
