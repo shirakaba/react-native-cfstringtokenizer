@@ -1,2 +1,2 @@
-import module from './js'
+import module from './src'
 export default module;
