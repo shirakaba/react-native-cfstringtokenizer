@@ -8,8 +8,8 @@
 
 import Foundation
 
-@objc(JBCFStringTokenizer)
-class JBCFStringTokenizer: NSObject {
+@objc(RCTCFStringTokenizer)
+class RCTCFStringTokenizer: NSObject {
     
     @objc func addEvent(name: String, location: String, date: NSNumber) -> Void {
         // Date is ready to use!
