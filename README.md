@@ -1,9 +1,10 @@
 # react-native-cfstringtokenizer
 
+**WARNING: very much still under development and doesn't work yet – still trying to get the Swift files to be noticed by RN.**
+
 Apple's CFStringTokenizer API bridged to React Native.
 
 * TODO: make macOS build target suffixed with `-macOS.a`.
-* TODO: rename from JBCFStringTokenizer -> RCTCFStringTokenizer.
 
 # Installation
 
@@ -32,6 +33,10 @@ Following [zxcpoiu's instructions](https://gist.github.com/robertjpayne/855fdb15
 ```
 
 * You may prefer to make a standalone bridging header instead; this may be necessary for handling other Swift submodules in your consumer Xcode project. This could probably be done by adding an empty `dummy.swift` to your source and accepting when Xcode gives a prompt about generating a bridging header file for you. In such case, it should be importing some/all of the same React Native headers that this submodule is providing.
+
+TODO: try without bundling the bridging header..?
+
+* I needed to add `@executable_path/../Frameworks/` to my runtime searchpaths when I was importing RCTCFStringTokenizer from `node_modules`. Still need to assess whether that's necessary if adding directly to the project tree.
 
 # Usage
 
