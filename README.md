@@ -11,7 +11,7 @@ Apple's CFStringTokenizer API bridged to React Native.
 Add this module to your consumer project:
 
 ```
-yarn add https://github.com/shirakaba/react-native-cfstringtokenizer.git#master
+yarn add https://github.com/shirakaba/react-native-cfstringtokenizer.git#last-working
 ```
 
 <!-- * Add its `node_modules/react-native-cfstringtokenizer/apple/RCTCFStringTokenizer.xcodeproj` to your consumer project's `Build Phases ➜ Link Binary With Libraries` field. -->
