@@ -11,14 +11,24 @@ import Foundation
 @objc(RNCFStringTokenizer)
 class RNCFStringTokenizer: NSObject {
   /** API very much still under construction! TODO: should probably handle these as NSString instead */
-  @objc func copyBestStringLanguage(_ string: String, _ length: NSNumber) -> String {
+  @objc func copyBestStringLanguage(
+    _ string: String,
+    _ length: NSNumber,
+    resolver resolve: @escaping RCTPromiseResolveBlock,
+    rejecter reject: @escaping RCTPromiseRejectBlock
+    ) -> Void {
     let str: String = CFStringTokenizerCopyBestStringLanguage(string as CFString, CFRange(location: 0, length: CFIndex(truncating: length)))! as String
     NSLog("Best string language determined to be: %@", str)
-    return str
+    return resolve(str)
   } 
 
   /** API very much still under construction! */
-  @objc func transliterate(_ input: String, _ localeIdentifier: String) -> [String] {
+  @objc func transliterate(
+    _ input: String,
+    _ localeIdentifier: String,
+    resolver resolve: @escaping RCTPromiseResolveBlock,
+    rejecter reject: @escaping RCTPromiseRejectBlock
+    ) -> Void {
     let inputText: NSString = input as NSString
     let range: CFRange = CFRangeMake(0, inputText.length)
     let targetLocale: NSLocale = NSLocale(localeIdentifier: localeIdentifier)
@@ -40,6 +50,8 @@ class RNCFStringTokenizer: NSObject {
         }
     }
     
-    return transliterations
+    NSLog("Generated transliterations: %@", transliterations)
+    
+    return resolve(transliterations)
   }
 }

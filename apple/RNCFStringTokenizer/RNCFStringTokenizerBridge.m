@@ -19,7 +19,17 @@
   return dispatch_queue_create("uk.co.birchlabs.RNCFStringTokenizerQueue", DISPATCH_QUEUE_SERIAL);
 }
 
-RCT_EXTERN_METHOD(copyBestStringLanguage:(NSString *)string :(NSNumber *)length)
-RCT_EXTERN_METHOD(transliterate:(NSString *)input :(NSString *)localeIdentifier)
+RCT_EXTERN_METHOD(
+                  copyBestStringLanguage:(NSString *)string
+                  :(NSNumber *)length
+                  resolver:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject
+                  )
+RCT_EXTERN_METHOD(
+                  transliterate:(NSString *)input
+                  :(NSString *)localeIdentifier
+                  resolver:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject
+                  )
 
 @end
