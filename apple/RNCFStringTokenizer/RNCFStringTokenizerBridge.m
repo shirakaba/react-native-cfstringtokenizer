@@ -20,5 +20,6 @@
 }
 
 RCT_EXTERN_METHOD(copyBestStringLanguage:(NSString *)string :(NSNumber *)length)
+RCT_EXTERN_METHOD(transliterate:(NSString *)input :(NSString *)localeIdentifier)
 
 @end
