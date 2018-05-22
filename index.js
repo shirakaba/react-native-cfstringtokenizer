@@ -1,2 +1,4 @@
-import module from './src'
-export default module;
+import { NativeModules } from 'react-native';
+const { RNCFStringTokenizer } = NativeModules;
+
+export default RNCFStringTokenizer;
