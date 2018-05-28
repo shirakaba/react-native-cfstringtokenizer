@@ -32,4 +32,26 @@ RCT_EXTERN_METHOD(
                   rejecter:(RCTPromiseRejectBlock)reject
                   )
 
+// Optional assertTermsIdentifier arg
+RCT_EXTERN_METHOD(
+                  romaniseobj
+                  :(NSString *)localeIdentifier
+                  :(NSNumber *)callbackIndex
+                  :(NSString *)input
+                  :(NSNumber *)iFrameIndex
+                  resolver:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject
+                  )
+
+//RCT_EXTERN_METHOD(
+//                  romaniseobj
+//                  :(NSString *)localeIdentifier
+//                  :(NSNumber *)callbackIndex
+//                  :(NSString *)input
+//                  :(NSNumber *)iFrameIndex
+//                  :(NSString *)assertTermsIdentifier
+//                  resolver:(RCTPromiseResolveBlock)resolve
+//                  rejecter:(RCTPromiseRejectBlock)reject
+//                  )
+
 @end
