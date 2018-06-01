@@ -32,6 +32,16 @@ RCT_EXTERN_METHOD(
                   rejecter:(RCTPromiseRejectBlock)reject
                   )
 
+RCT_EXTERN_METHOD(
+                  lookUpTermInPopover
+                  :(NSString *)termsLanguageId
+                  :(NSString *)term
+                  :(NSNumber *)dictPointX
+                  :(NSNumber *)dictPointY
+                  resolver:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject
+                  )
+
 // Optional assertTermsIdentifier arg
 RCT_EXTERN_METHOD(
                   romaniseobj

@@ -55,6 +55,29 @@ class RNCFStringTokenizer: NSObject {
         return resolve(transliterations)
     }
     
+    
+    // termsLanguageId: String, term: String, dictPointX: Float, dictPointY: Float
+    @objc func lookUpTermInPopover(
+        _ termsLanguageId: String,
+        _ term: String,
+        _ dictPointX: NSNumber,
+        _ dictPointY: NSNumber,
+        resolver resolve: @escaping RCTPromiseResolveBlock,
+        rejecter reject: @escaping RCTPromiseRejectBlock
+        )
+    {
+        // (in Obj-C) From http://nshipster.com/dictionary-services/
+        // let definition: Unmanaged<CFString>? = DCSCopyTextDefinition(nil, term as CFString, CFRangeMake(0, (term as NSString).length))
+        
+        // (in Swift) From https://github.com/sekimura/lookup/blob/master/lookup.swift#L45
+        guard let definition: Unmanaged<CFString> = DCSCopyTextDefinition(nil, term as CFString, CFRangeMake(0, (term as NSString).length)) else {
+            return reject("No definition found", "DCSCopyTextDefinition returned nil", NSError(domain: "domain", code: 0))
+        }
+        let value: String = definition.takeUnretainedValue() as String
+        NSLog("Definition for term \"%@\": %@", term, value)
+        return resolve(value)
+    }
+    
     // callbackIndex: Int, input: String, iFrameIndex: Int, assertTermsIdentifier: String? = nil
     
     @objc func romaniseobj(
