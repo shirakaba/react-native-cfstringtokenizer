@@ -8,6 +8,8 @@
 
 import Foundation
 import CoreServices
+// import Carbon
+import Cocoa
 
 @objc(RNCFStringTokenizer)
 class RNCFStringTokenizer: NSObject {
@@ -70,8 +72,34 @@ class RNCFStringTokenizer: NSObject {
       // let definition: Unmanaged<CFString>? = DCSCopyTextDefinition(nil, term as CFString, CFRangeMake(0, (term as NSString).length))
       
       let activeDictionaries: NSArray = setPreferredDicts(["com.apple.dictionary.zh_CN-en.OCD"])
+      // https://stackoverflow.com/questions/11214768/how-to-hook-the-os-x-dictionary
+      // https://stackoverflow.com/questions/30865281/hidictionarywindowshow-usage-in-swift?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+      //     [self.view showDefinitionForAttributedString:[[NSAttributedString alloc] initWithString:text] atPoint:NSMakePoint(0.0, 0.0)];
+      if let window = NSApplication.shared.mainWindow {
+        if let view = window.contentView {
+          // https://stackoverflow.com/a/32167190/5951226
+          /* NSDefinitionPresentationTypeKey is an optional key in 'options' that specifies the presentation type of the definition display.  The possible values are NSDefinitionPresentationTypeOverlay that produces a small overlay window at the string location, or NSDefinitionPresentationTypeDictionaryApplication that invokes 'Dictionary' application to display the definition.  Without this option, the definition will be shown in either of those presentation forms depending on the 'Contextual Menu:' setting in Dictionary application preferences.
+           */
+          // view.showDefinition(for: NSAttributedString(string: term), attributes: [NSDefinitionPresentationTypeDictionaryApplication], at: NSMakePoint(0.0, 0.0))
+          DispatchQueue.main.async {
+            // "must be used from main thread only"
+            // Looks like this searches all active dictionaries, but at least it gives you a button to configure them.
+            view.showDefinition(for: NSAttributedString(string: term), at: NSMakePoint(0.0, 0.0))
+            // self.restorePreferredDicts(activeDictionaries)
+          }
+          
+        } else {
+          NSLog("Warning: window.contentView was nil in lookUpTermInPopover().")
+        }
+      } else {
+        NSLog("Warning: window was nil in lookUpTermInPopover().")
+      }
+      // Requires Carbon import:
+      // HIDictionaryWindowShow(<#T##dictionary: DCSDictionary!##DCSDictionary!#>, <#T##textString: CFTypeRef!##CFTypeRef!#>, <#T##selectionRange: CFRange##CFRange#>, <#T##textFont: CTFont!##CTFont!#>, <#T##textOrigin: CGPoint##CGPoint#>, <#T##verticalText: Bool##Bool#>, <#T##viewTransform: UnsafePointer<CGAffineTransform>!##UnsafePointer<CGAffineTransform>!#>)
       
       // (in Swift) From https://github.com/sekimura/lookup/blob/master/lookup.swift#L45
+      // See also: https://github.com/mattt/DictionaryKit
+      // http://nshipster.com/dictionary-services/
       guard let definition: Unmanaged<CFString> = DCSCopyTextDefinition(nil, term as CFString, CFRangeMake(0, (term as NSString).length)) else {
         restorePreferredDicts(activeDictionaries)
         return reject("No definition found", "DCSCopyTextDefinition returned nil", NSError(domain: "domain", code: 0))
@@ -158,6 +186,7 @@ class RNCFStringTokenizer: NSObject {
 //  "/System/Library/Frameworks/CoreServices.framework/Frameworks/DictionaryServices.framework/Resources/Wikipedia.wikipediadictionary"
   // "/Library/Dictionaries/Oxford American Writer's Thesaurus.dictionary"
   
+  // https://stackoverflow.com/a/16764254/5951226
   func setPreferredDicts(_ dictKeys: NSArray) -> NSArray {
     let userDefaults: UserDefaults = UserDefaults.standard
     let dictionaryPreferences: NSMutableDictionary = (userDefaults.persistentDomain(forName: RNCFStringTokenizer.APPLE_DICT_SERVICES_KEY)! as NSDictionary).mutableCopy() as! NSMutableDictionary
