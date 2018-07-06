@@ -32,36 +32,26 @@ RCT_EXTERN_METHOD(
                   rejecter:(RCTPromiseRejectBlock)reject
                   )
 
+// Optional assertTermsIdentifier arg
 RCT_EXTERN_METHOD(
-                  lookUpTermInPopover
-                  :(NSString *)termsLanguageId
-                  :(NSString *)term
-                  :(NSNumber *)dictPointX
-                  :(NSNumber *)dictPointY
+                  romaniseobjBatch
+                  :(NSString *)localeIdentifier
+                  :(NSArray<NSNumber *>)callbackIndexes
+                  :(NSArray<NSString *>)inputs
+                  :(NSNumber *)iFrameIndex
                   resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject
                   )
 
-// Optional assertTermsIdentifier arg
 RCT_EXTERN_METHOD(
                   romaniseobj
                   :(NSString *)localeIdentifier
                   :(NSNumber *)callbackIndex
                   :(NSString *)input
                   :(NSNumber *)iFrameIndex
+                  :(NSString *)assertTermsIdentifier
                   resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject
                   )
-
-//RCT_EXTERN_METHOD(
-//                  romaniseobj
-//                  :(NSString *)localeIdentifier
-//                  :(NSNumber *)callbackIndex
-//                  :(NSString *)input
-//                  :(NSNumber *)iFrameIndex
-//                  :(NSString *)assertTermsIdentifier
-//                  resolver:(RCTPromiseResolveBlock)resolve
-//                  rejecter:(RCTPromiseRejectBlock)reject
-//                  )
 
 @end
