@@ -21,7 +21,7 @@
 
 RCT_EXTERN_METHOD(
                   copyBestStringLanguage:(NSString *)string
-                  :(NSNumber *)length
+                  :(nonnull NSNumber *)length
                   resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject
                   )
