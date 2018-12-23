@@ -1,4 +1,4 @@
-import { NativeModules, Platform } from 'react-native';
-const { RCTCFStringTokenizer } = NativeModules;
+import { NativeModules } from 'react-native';
+const { RNCFStringTokenizer } = NativeModules;
 
-export default RCTCFStringTokenizer;
+export default RNCFStringTokenizer;
