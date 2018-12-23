@@ -10,6 +10,11 @@ import Foundation
 
 @objc(RNCFStringTokenizer)
 class RNCFStringTokenizer: NSObject {
+  // Here we don't use the override keyword, because we're inheriting just from NSObject.
+  @objc static func requiresMainQueueSetup() -> Bool {
+    return false
+  }
+  
   /** API very much still under construction! TODO: should probably handle these as NSString instead */
   @objc func copyBestStringLanguage(
     _ string: String,
