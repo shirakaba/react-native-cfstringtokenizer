@@ -67,13 +67,14 @@ class RNCFStringTokenizer: NSObject {
         _ callbackIndexes: [NSNumber],
         _ inputs: [String],
         _ iFrameIndex: NSNumber,
+        _ pdf: Bool,
         //    _ assertTermsIdentifier: String? = nil,
         resolver resolve: @escaping RCTPromiseResolveBlock,
         rejecter reject: @escaping RCTPromiseRejectBlock
     ) -> Void
     {
         let pinyinjectPromiseArgsArr: [PinyinjectPromiseArgs] = callbackIndexes.enumerated().map { (index, callbackIndex) in
-            return tokenise(localeIdentifier, callbackIndex, inputs[index], iFrameIndex)
+            return Tokenising.tokenise(localeIdentifier, callbackIndex, inputs[index], iFrameIndex, pdf)
         }
         
         let encoder: JSONEncoder = JSONEncoder()
@@ -89,58 +90,19 @@ class RNCFStringTokenizer: NSObject {
             return reject("JSON error", "Unable to encode JSON", NSError(domain: "domain", code: 0))
         }
     }
-  
-    func tokenise(
-        _ localeIdentifier: String,
-        _ callbackIndex: NSNumber,
-        _ input: String,
-        _ iFrameIndex: NSNumber
-    ) -> PinyinjectPromiseArgs
-    {
-        let inputText: NSString = input as NSString
-        let range: CFRange = CFRangeMake(0, inputText.length)
-        let targetLocale: NSLocale = NSLocale(localeIdentifier: localeIdentifier)
-        let tokenizer: CFStringTokenizer = CFStringTokenizerCreate(kCFAllocatorDefault, inputText as CFString, range, kCFStringTokenizerUnitWordBoundary, targetLocale)
-        var originals = [String]()
-        var transliterations = [String]()
-        var lemmas = [String]()
-
-        var tokenType: CFStringTokenizerTokenType = CFStringTokenizerGoToTokenAtIndex(tokenizer, 0)
-
-        while (tokenType != .none) {
-            if let attribute: CFTypeRef = CFStringTokenizerCopyCurrentTokenAttribute(tokenizer, kCFStringTokenizerAttributeLatinTranscription) {
-                let original: String = CFStringCreateWithSubstring(kCFAllocatorDefault, inputText as CFString, CFStringTokenizerGetCurrentTokenRange(tokenizer)) as String
-                originals.append(original)
-                let transliteration: String = attribute as! String
-                transliterations.append(transliteration)
-                tokenType = CFStringTokenizerAdvanceToNextToken(tokenizer)
-            } else {
-                break;
-            }
-        }
-
-        return PinyinjectPromiseArgs(
-            iFrameIndex: Int(truncating: iFrameIndex),
-            callbackIndex: Int(truncating: callbackIndex),
-            originals: originals,
-            transliterations: transliterations,
-            transcriptionsToBeRequired: true,
-            input: input,
-            lemmas: lemmas
-        )
-    }
     
     @objc func romaniseobj(
         _ localeIdentifier: String,
         _ callbackIndex: NSNumber,
         _ input: String,
         _ iFrameIndex: NSNumber,
+        _ pdf: Bool,
         //    _ assertTermsIdentifier: String? = nil,
         resolver resolve: @escaping RCTPromiseResolveBlock,
         rejecter reject: @escaping RCTPromiseRejectBlock
     ) -> Void
     {
-        let pinyinjectPromiseArgs: PinyinjectPromiseArgs = tokenise(localeIdentifier, callbackIndex, input, iFrameIndex)
+        let pinyinjectPromiseArgs: PinyinjectPromiseArgs = Tokenising.tokenise(localeIdentifier, callbackIndex, input, iFrameIndex, pdf)
         // print("promise args going in: iFrameIndex: \(Int(truncating: iFrameIndex)); callbackIndex: \(Int(truncating: callbackIndex))")
         
         let encoder: JSONEncoder = JSONEncoder()

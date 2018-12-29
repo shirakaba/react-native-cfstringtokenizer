@@ -21,7 +21,7 @@
 
 RCT_EXTERN_METHOD(
                   copyBestStringLanguage:(NSString *)string
-                  :(NSNumber *)length
+                  :(nonnull NSNumber *)length
                   resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject
                   )
@@ -38,7 +38,8 @@ RCT_EXTERN_METHOD(
                   :(NSString *)localeIdentifier
                   :(NSArray<NSNumber *>)callbackIndexes
                   :(NSArray<NSString *>)inputs
-                  :(NSNumber *)iFrameIndex
+                  :(nonnull NSNumber *)iFrameIndex
+                  :(BOOL)pdf
                   resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject
                   )
@@ -46,10 +47,11 @@ RCT_EXTERN_METHOD(
 RCT_EXTERN_METHOD(
                   romaniseobj
                   :(NSString *)localeIdentifier
-                  :(NSNumber *)callbackIndex
+                  :(nonnull NSNumber *)callbackIndex
                   :(NSString *)input
-                  :(NSNumber *)iFrameIndex
-                  :(NSString *)assertTermsIdentifier
+                  :(nonnull NSNumber *)iFrameIndex
+                  :(BOOL)pdf
+                  // :(NSString *)assertTermsIdentifier
                   resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject
                   )
